@@ -46,7 +46,6 @@ class Countdown extends Component {
   }
 
   componentWillUnmount() {
-    console.log('ComponentDidUnmount');
     clearInterval(this.timer);
     this.timer= undefined;
   }
