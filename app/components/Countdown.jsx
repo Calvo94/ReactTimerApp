@@ -25,27 +25,38 @@ class Countdown extends Component {
 
       }
     }
-  }
+  };
   startTimer() {
     this.timer = setInterval(() => {
       var newCount = this.state.count -1;
       this.setState({
         count : newCount >0 ? newCount : 0
       });
+      if (newCount === 0){
+        this.setState({CountdownStatus: 'stopped'});
+      }
     },1000);
+
   }
   handleSetCountdown(seconds){
     this.setState({count:seconds, CountdownStatus: 'started'})
   }
-  handleStatusChange(newStatus) {
+  onStatusChange(newStatus) {
     this.setState({CountdownStatus: newStatus});
   }
+
+  componentWillUnmount() {
+    console.log('ComponentDidUnmount');
+    clearInterval(this.timer);
+    this.timer= undefined;
+  }
+
   render() {
     var { count,CountdownStatus } = this.state;
 
     const renderControlArea = () => {
       if (CountdownStatus !== 'stopped') {
-        return <Controls CountdownStatus={CountdownStatus} onStatusChange={this.handleStatusChange.bind(this)} />
+        return <Controls CountdownStatus={CountdownStatus} onStatusChange={this.onStatusChange.bind(this)} />
       } else {
         return <CountdownForm onSetCountdown={this.handleSetCountdown.bind(this)} />
       }
@@ -53,6 +64,7 @@ class Countdown extends Component {
 
     return (
       <div>
+        <h1 className="page-title">Countdown App</h1>
         <Clock totalSeconds={count}/>
         {renderControlArea()}
       </div>

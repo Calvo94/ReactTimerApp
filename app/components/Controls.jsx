@@ -27,7 +27,7 @@ class Controls extends Component {
 
 Controls.propTypes= {
   CountdownStatus: React.PropTypes.string.isRequired,
-  onStatusChange: React.PropTypes.string.isRequired
+  onStatusChange: React.PropTypes.func.isRequired
 }
 
 module.exports = Controls;
