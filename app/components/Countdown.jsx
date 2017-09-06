@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import Clock from 'Clock';
 
 class Countdown extends Component {
   render() {
-    return (<p>Countdown.jsx</p>)
+    return (
+      <div>
+        <Clock totalSeconds={129}/>
+      </div>
+    );
   }
 }
 
