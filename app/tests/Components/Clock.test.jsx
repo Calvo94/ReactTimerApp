@@ -9,7 +9,7 @@ describe('Clock', () => {
   it('should exist', () => {
     expect(Clock).toExist;
   });
-});
+
 
 describe('render', () => {
   it('should render clock to output' , () => {
@@ -36,4 +36,6 @@ describe('formatSeconds', () => {
     var actual = clock.formatSeconds(seconds);
     expect(actual).toBe(expected);
   });
+});
+
 });
